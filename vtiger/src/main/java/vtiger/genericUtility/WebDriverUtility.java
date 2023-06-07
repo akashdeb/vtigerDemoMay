@@ -36,9 +36,9 @@ public class WebDriverUtility {
 		wait.until(ExpectedConditions.titleContains(title));
 	}
 
-	public void selectOption(WebElement element, String option) {
+	public void selectOption(WebElement dropdown, String option) {
 
-		Select select = new Select(element);
+		Select select = new Select(dropdown);
 		select.selectByVisibleText(option);
 	}
 

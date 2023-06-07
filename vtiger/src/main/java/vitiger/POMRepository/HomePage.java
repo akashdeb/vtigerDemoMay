@@ -134,8 +134,11 @@ public class HomePage {
 		invoiceModule.click();
 	}
 	
-	
-	
+	public void logoutAction() {
+		Actions action=new Actions(driver);
+		action.moveToElement(administratorIcon).perform();
+		signOutLink.click();
+	}
 	
 	
 
