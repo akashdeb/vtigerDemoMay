@@ -1,5 +1,10 @@
 package vtiger.genericUtility;
 
-public class ListenersImplementationClass {
+import org.testng.ITestListener;
+
+public class ListenersImplementationClass implements ITestListener {
+	
+	
+	
 
 }

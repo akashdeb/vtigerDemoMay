@@ -11,11 +11,15 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
+import vitiger.POMRepository.HomePage;
+import vitiger.POMRepository.LoginPage;
+
 public class BaseClass {
 	public WebDriver driver;
-	FileUtility fUtils=new FileUtility();
-	WebDriverUtility wUtils = new WebDriverUtility();
-
+	public FileUtility fUtils=new FileUtility();
+	public WebDriverUtility wUtils = new WebDriverUtility();
+	public ExcelUtility eUtils = new ExcelUtility();
+	
 	@BeforeSuite
 	public void bsConfig() {
 		
@@ -26,9 +30,7 @@ public class BaseClass {
 	public void bcConfig() throws IOException {
 		
 		String url = fUtils.toFetchDataFromPropertyFile(IPathConstant.URL_KEY);
-		String username = fUtils.toFetchDataFromPropertyFile(IPathConstant.USERNAME_KEY);
-		String password = fUtils.toFetchDataFromPropertyFile(IPathConstant.PASSWORD_KEY);
-
+		
 		driver= new ChromeDriver();
 		System.out.println("The browser has been launched");
 		wUtils.maximizeTheWebPage(driver);
@@ -39,22 +41,32 @@ public class BaseClass {
 	
 	
 	@BeforeMethod
-	public void bmConfig() {
+	public void bmConfig() throws IOException {
 		
+		String username = fUtils.toFetchDataFromPropertyFile(IPathConstant.USERNAME_KEY);
+		String password = fUtils.toFetchDataFromPropertyFile(IPathConstant.PASSWORD_KEY);
 		
+		LoginPage login=new LoginPage(driver);
+		login.loginAction(username, password);
+		System.out.println("The "+username+" has logged in");
 		
 	}
 	
 	
 	@AfterMethod
-	public void amConfig() {
-		
+	public void amConfig() throws IOException {
+		String username = fUtils.toFetchDataFromPropertyFile(IPathConstant.USERNAME_KEY);
+		HomePage home = new HomePage(driver);
+		home.logoutAction();
+		System.out.println("The "+username+" has logged out");
 		
 	}
 	
 	@AfterClass
 	public void acConfig() {
 		
+		driver.quit();
+		System.out.println("The Browser has been closed");
 		
 	}
 	

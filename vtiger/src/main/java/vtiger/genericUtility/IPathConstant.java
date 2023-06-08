@@ -5,7 +5,7 @@ public interface IPathConstant {
 	String PROPERTYFILEPATH = "./src/test/resources/vtigerPropertyData.properties";
 	String EXCELFILEPATH = "./src/test/resources/VtigerTestData.xlsx";
 	
-	String SHEETNAME = "Sheet1";
+	String SHEETNAME = "Lead_001";
 
 	int IMPLICITWAIT = 20;
 	int EXPLICITWAIT = 20;
