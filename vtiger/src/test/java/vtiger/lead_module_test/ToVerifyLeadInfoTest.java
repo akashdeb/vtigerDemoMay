@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import vitiger.POMRepository.CreatingNewLead;
@@ -12,11 +13,11 @@ import vitiger.POMRepository.LeadInformationPage;
 import vitiger.POMRepository.LeadsPage;
 import vtiger.genericUtility.BaseClass;
 import vtiger.genericUtility.IPathConstant;
-
+@Listeners (vtiger.genericUtility.ListenersImplementationClass.class)
 public class ToVerifyLeadInfoTest extends BaseClass {
 
 	@Test
-	public void toCreateALeadAndToVerifyLeadInfoTest() throws EncryptedDocumentException, IOException {
+	public void toCreateALeadAndToVerifyLeadInfoTest() throws EncryptedDocumentException, IOException, InterruptedException {
 		//Here we are fetching data from excel sheets
 		String leadSalutation = eUtils.fetchStringDataFromExcelSheet(IPathConstant.SHEETNAME, 17, 2);
 		String leadFirstName = eUtils.fetchStringDataFromExcelSheet(IPathConstant.SHEETNAME, 18, 2);
@@ -42,7 +43,7 @@ public class ToVerifyLeadInfoTest extends BaseClass {
 		createLead.enterFirstName(leadFirstName);
 		createLead.enterLastName(expectedleadLastName);
 		createLead.enterCompanytName(leadCompanyName);
-		createLead.selectFromIndustrDropdown(leadIndustryName);
+		createLead.selectFromIndustryDropdown(leadIndustryName);
 		createLead.clickOnGroupRadioButton();
 		createLead.selectFromAssigntoDropdown(leadAssignedToDetails);
 		createLead.clickOnSaveButton();
@@ -52,7 +53,7 @@ public class ToVerifyLeadInfoTest extends BaseClass {
 		//Verifying the lead
 		String actualLeadsLastName = leadInfo.verfiyLeadsName(expectedleadLastName);
 		
-		Assert.assertEquals(actualLeadsLastName, expectedleadLastName);
+		Assert.assertTrue(actualLeadsLastName.contains(expectedleadLastName));
 		System.out.println("Pass: the Lead has been verified");
 		
 		

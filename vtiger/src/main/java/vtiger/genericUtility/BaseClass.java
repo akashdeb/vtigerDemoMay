@@ -19,7 +19,7 @@ public class BaseClass {
 	public FileUtility fUtils=new FileUtility();
 	public WebDriverUtility wUtils = new WebDriverUtility();
 	public ExcelUtility eUtils = new ExcelUtility();
-	
+	public static WebDriver sDriver;
 	@BeforeSuite
 	public void bsConfig() {
 		
@@ -37,6 +37,7 @@ public class BaseClass {
 		wUtils.implicitWait(driver);
 		driver.get(url);
 		System.out.println("The URL has been navigated");
+		sDriver = driver;
 	}
 	
 	

@@ -28,7 +28,7 @@ public class CreatingNewLead {
 	@FindBy(name = "industry")
 	private WebElement industryDropdown;
 	
-	@FindBy(name = "assigntype")
+	@FindBy(xpath  = "//input[@value='T']")
 	private WebElement groupByRadioButton;
 	
 	@FindBy(name = "assigned_group_id")
@@ -86,7 +86,7 @@ public class CreatingNewLead {
 		companyTextField.sendKeys(company);
 	}
 	
-	public void selectFromIndustrDropdown(String option) {
+	public void selectFromIndustryDropdown(String option) {
 		Select select=new Select(industryDropdown);
 		 select.selectByVisibleText(option);
 	}
