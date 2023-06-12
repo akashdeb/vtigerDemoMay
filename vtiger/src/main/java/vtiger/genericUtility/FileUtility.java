@@ -3,6 +3,7 @@ package vtiger.genericUtility;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.ResourceBundle;
 /**
  * This class contains the methods to fetch data from property file
  * @author Akash
@@ -23,6 +24,11 @@ public class FileUtility {
 		
 		return prop.getProperty(key);	
 		
+	}
+	
+	public String fetchData(String key) {
+		
+		return ResourceBundle.getBundle("vtigerPropertyData").getString(key);
 	}
 
 }

@@ -1,6 +1,9 @@
 package vtiger.genericUtility;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,6 +14,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
+import com.mysql.cj.jdbc.Driver;
+
 import vitiger.POMRepository.HomePage;
 import vitiger.POMRepository.LoginPage;
 
@@ -20,10 +25,15 @@ public class BaseClass {
 	public WebDriverUtility wUtils = new WebDriverUtility();
 	public ExcelUtility eUtils = new ExcelUtility();
 	public static WebDriver sDriver;
+	public Connection connection;
+	
 	@BeforeSuite
-	public void bsConfig() {
+	public void bsConfig() throws SQLException {
+		Driver driver = new Driver();
+		DriverManager.registerDriver(driver);
 		
-		
+		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/vtiger", "root", "root");
+		System.out.println("The data base connection was established");
 	}
 	
 	@BeforeClass
@@ -72,9 +82,10 @@ public class BaseClass {
 	}
 	
 	@AfterSuite
-	public void asConfig() {
+	public void asConfig() throws SQLException {
 		
-		
+		connection.close();
+		System.out.println("The data base connection was closed");
 	}
 
 }

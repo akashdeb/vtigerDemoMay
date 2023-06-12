@@ -16,7 +16,7 @@ import vtiger.genericUtility.IPathConstant;
 @Listeners (vtiger.genericUtility.ListenersImplementationClass.class)
 public class ToVerifyLeadInfoTest extends BaseClass {
 
-	@Test
+	@Test(retryAnalyzer = vtiger.genericUtility.RetryAnalyzerImplementationClass.class)
 	public void toCreateALeadAndToVerifyLeadInfoTest() throws EncryptedDocumentException, IOException, InterruptedException {
 		//Here we are fetching data from excel sheets
 		String leadSalutation = eUtils.fetchStringDataFromExcelSheet(IPathConstant.SHEETNAME, 17, 2);
@@ -27,6 +27,7 @@ public class ToVerifyLeadInfoTest extends BaseClass {
 		String leadAssignedToDetails = eUtils.fetchStringDataFromExcelSheet(IPathConstant.SHEETNAME, 23, 2);
 		
 		//All the object creation statements
+		
 		HomePage home = new HomePage(driver);
 		LeadsPage leads = new LeadsPage(driver);
 		CreatingNewLead createLead = new CreatingNewLead(driver);
