@@ -1,5 +1,6 @@
 package vtiger.genericUtility;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Random;
 /**
@@ -26,7 +27,26 @@ public class JavaUtility {
 		return date.toString().replace(" ", "_").replace(":", "_");
 	}
 	
-	
+	public String generateDateInYYYY_MM_DD_Format() {
+		LocalDateTime date = LocalDateTime.now();
+		int year = date.getYear();
+		int month=date.getMonthValue();
+		int day = date.getDayOfMonth();
+		String newMonth = "";
+		String newDay = "";
+		if(month<10) {
+			newMonth="0"+month;
+			return year+"-"+newMonth+"-"+day;	
+		}
+		if(day<10) {
+			newDay = "0"+day;
+			return year+"-"+month+"-"+newDay;	
+		}
+		else
+			return year+"-"+month+"-"+day;	
+
+
+	}
 	
 
 }
