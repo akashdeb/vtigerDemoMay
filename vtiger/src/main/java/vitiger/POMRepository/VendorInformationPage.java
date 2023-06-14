@@ -15,8 +15,8 @@ public class VendorInformationPage {
 	}
 	
 	
-	public void verifyVendorInfo(String vendorname) {
-		driver.findElement(By.xpath("//span[contains(text(), '"+vendorname+"')]")).getText();
+	public String verifyVendorInfo(String vendorname) {
+		return driver.findElement(By.xpath("//span[contains(text(), '"+vendorname+"')]")).getText();
 	}
 
 }

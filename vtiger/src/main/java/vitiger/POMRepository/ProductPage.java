@@ -19,7 +19,7 @@ public class ProductPage {
 		return productPlusButton;
 	}
 	
-	public void clickOnvendorPlusButton() {
+	public void clickOnProductPlusButton() {
 		productPlusButton.click();
 	}
 	
