@@ -242,5 +242,15 @@ public class WebDriverUtility {
 		JavascriptExecutor javaScript = (JavascriptExecutor) driver;
 		javaScript.executeScript("window.scrollBy(0,500)");
 	}
+	
+	public static String takeScreenShot(WebDriver driver,String screenShotName)throws Throwable
+	{
+		TakesScreenshot takeScreenShot = (TakesScreenshot)driver;
+		 java.io.File src = takeScreenShot.getScreenshotAs(OutputType.FILE);
+		 java.io.File dst = new java.io.File("./screenShot/"+screenShotName+".PNG");
+		Files.copy(src, dst);
+		return screenShotName;
+	}
+
 
 }

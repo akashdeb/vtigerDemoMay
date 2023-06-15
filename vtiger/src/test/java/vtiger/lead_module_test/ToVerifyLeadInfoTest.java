@@ -19,12 +19,12 @@ public class ToVerifyLeadInfoTest extends BaseClass {
 	@Test(retryAnalyzer = vtiger.genericUtility.RetryAnalyzerImplementationClass.class)
 	public void toCreateALeadAndToVerifyLeadInfoTest() throws EncryptedDocumentException, IOException, InterruptedException {
 		//Here we are fetching data from excel sheets
-		String leadSalutation = eUtils.fetchStringDataFromExcelSheet(IPathConstant.SHEETNAME, 17, 2);
-		String leadFirstName = eUtils.fetchStringDataFromExcelSheet(IPathConstant.SHEETNAME, 18, 2);
-		String expectedleadLastName = eUtils.fetchStringDataFromExcelSheet(IPathConstant.SHEETNAME, 19, 2);
-		String leadCompanyName = eUtils.fetchStringDataFromExcelSheet(IPathConstant.SHEETNAME, 20, 2);
-		String leadIndustryName = eUtils.fetchStringDataFromExcelSheet(IPathConstant.SHEETNAME, 21, 2);
-		String leadAssignedToDetails = eUtils.fetchStringDataFromExcelSheet(IPathConstant.SHEETNAME, 23, 2);
+		String leadSalutation = eUtils.fetchStringDataFromExcelSheet(IPathConstant.LEAD_SHEETNAME, 17, 2);
+		String leadFirstName = eUtils.fetchStringDataFromExcelSheet(IPathConstant.LEAD_SHEETNAME, 18, 2);
+		String expectedleadLastName = eUtils.fetchStringDataFromExcelSheet(IPathConstant.LEAD_SHEETNAME, 19, 2);
+		String leadCompanyName = eUtils.fetchStringDataFromExcelSheet(IPathConstant.LEAD_SHEETNAME, 20, 2);
+		String leadIndustryName = eUtils.fetchStringDataFromExcelSheet(IPathConstant.LEAD_SHEETNAME, 21, 2);
+		String leadAssignedToDetails = eUtils.fetchStringDataFromExcelSheet(IPathConstant.LEAD_SHEETNAME, 23, 2);
 		
 		//All the object creation statements
 		
